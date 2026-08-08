@@ -51,7 +51,14 @@ Prefer project-scoped installs? `npx skills add` installs into the **current pro
 
 ### Manual install
 
-Copy or symlink `skills/grill-me` into your agent's skills directory.
+Clone the repo first, then run the commands below **from the repository root** (they use `$PWD` to reference the skill files):
+
+```sh
+git clone https://github.com/flyeric0212/agent-skills.git
+cd agent-skills
+```
+
+Then copy or symlink `skills/grill-me` into your agent's skills directory:
 
 #### Codex
 

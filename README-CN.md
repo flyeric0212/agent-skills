@@ -53,7 +53,14 @@ npx skills add flyeric0212/agent-skills
 
 ### 手动安装
 
-将 `skills/grill-me` 复制或符号链接到 Agent 的 skills 目录。
+先克隆仓库，然后在**仓库根目录**下执行以下命令（`$PWD` 用于引用技能文件）：
+
+```sh
+git clone https://github.com/flyeric0212/agent-skills.git
+cd agent-skills
+```
+
+再将 `skills/grill-me` 复制或符号链接到 Agent 的 skills 目录：
 
 #### Codex
 
