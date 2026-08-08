@@ -36,10 +36,10 @@ For `grill-me`, the workflow is:
 Use the [skills CLI](https://github.com/vercel-labs/skills) — the official installer for the open agent skills ecosystem. It auto-detects which coding agents you have installed and symlinks every skill in this repo into each one:
 
 ```sh
-npx skills add <owner>/agent-skills
+npx skills add flyeric0212/agent-skills
 ```
 
-Replace `<owner>` with the GitHub username of this repository. Useful variants:
+Useful variants:
 
 - `--skill grill-me` — install only a specific skill
 - `-g` — install globally (`~/<agent>/skills/`) instead of only in the current project
@@ -99,10 +99,8 @@ Project-scoped skills are committed with the repo and shared with your team. Glo
 
 ## Contributing
 
-- Keep every skill self-contained under `skills/<skill-name>/`.
-- `SKILL.md` is the authoritative instruction, maintained in English. Any translation (e.g. `SKILL-CN.md`) is non-authoritative and must not introduce rules absent from `SKILL.md`; on conflict, `SKILL.md` wins.
-- Every skill must be listed in the Skills table above, with the name linked to its `SKILL.md`.
-- Keep skills lightweight: one clear purpose, Markdown headings (`##` / `###`), no XML-style wrapper tags.
+- Add or update `skills/<skill-name>/SKILL.md` and its row in the Skills table above.
+- `SKILL.md` is the authoritative instruction, maintained in English; translations (e.g. `SKILL-CN.md`) must not add rules absent from `SKILL.md`.
 
 ## License
 

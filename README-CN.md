@@ -38,10 +38,10 @@
 使用 [skills CLI](https://github.com/vercel-labs/skills)——开源 Agent 技能生态的官方安装器。它会自动检测你已安装的编码 Agent，并将本仓库中的每个技能以符号链接方式安装到各 Agent：
 
 ```sh
-npx skills add <owner>/agent-skills
+npx skills add flyeric0212/agent-skills
 ```
 
-将 `<owner>` 替换为本仓库的 GitHub 用户名。常用变体：
+常用变体：
 
 - `--skill grill-me` — 只安装指定技能
 - `-g` — 全局安装（`~/<agent>/skills/`），而不是仅当前项目
@@ -101,10 +101,8 @@ ln -s /path/to/agent-skills/skills/grill-me .claude/skills/grill-me
 
 ## 贡献
 
-- 每个技能保持独立，存放于 `skills/<技能名>/`。
-- `SKILL.md` 是权威指令，以英文维护。任何翻译（如 `SKILL-CN.md`）均为非权威，不得引入 `SKILL.md` 中不存在的规则；发生冲突时以 `SKILL.md` 为准。
-- 每个技能必须在上方技能列表中有条目，名称链接到其 `SKILL.md`。
-- 保持技能轻量：目标单一、使用 Markdown 标题（`##` / `###`）、不使用 XML 风格包裹标签。
+- 新增或修改 `skills/<技能名>/SKILL.md`，并更新上方技能列表中的对应条目。
+- `SKILL.md` 是权威指令，以英文维护；翻译（如 `SKILL-CN.md`）不得加入其中不存在的规则。
 
 ## License
 
