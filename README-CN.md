@@ -33,37 +33,55 @@
 
 ## 安装
 
-将所需技能目录复制到 Agent 的 skills 目录，或使用符号链接。以下 Agent 均从同一目录布局读取 `SKILL.md`。
+### 使用 `npx skills` 快速安装（推荐）
 
-### Codex
+使用 [skills CLI](https://github.com/vercel-labs/skills)——开源 Agent 技能生态的官方安装器。它会自动检测你已安装的编码 Agent，并将本仓库中的每个技能以符号链接方式安装到各 Agent：
+
+```sh
+npx skills add <owner>/agent-skills
+```
+
+将 `<owner>` 替换为本仓库的 GitHub 用户名。常用变体：
+
+- `--skill grill-me` — 只安装指定技能
+- `-g` — 全局安装（`~/<agent>/skills/`），而不是仅当前项目
+- `-a codex -a claude-code` — 只安装到指定 Agent，而非全部检测到的
+- `--copy` — 复制文件而非符号链接
+- `npx skills list` — 查看已安装技能；`npx skills update` / `npx skills remove` — 管理已安装技能
+
+### 手动安装
+
+将 `skills/grill-me` 复制或符号链接到 Agent 的 skills 目录。
+
+#### Codex
 
 ```sh
 mkdir -p ~/.codex/skills
 ln -s "$PWD/skills/grill-me" ~/.codex/skills/grill-me
 ```
 
-### Claude Code
+#### Claude Code
 
 ```sh
 mkdir -p ~/.claude/skills
 ln -s "$PWD/skills/grill-me" ~/.claude/skills/grill-me
 ```
 
-### Cursor
+#### Cursor
 
 ```sh
 mkdir -p ~/.cursor/skills
 ln -s "$PWD/skills/grill-me" ~/.cursor/skills/grill-me
 ```
 
-### opencode
+#### opencode
 
 ```sh
 mkdir -p ~/.config/opencode/skills
 ln -s "$PWD/skills/grill-me" ~/.config/opencode/skills/grill-me
 ```
 
-如需项目级使用而非全局，将符号链接放入仓库内对应的项目目录（如 `.codex/skills/`、`.claude/skills/`、`.cursor/skills/`、`.opencode/skills/`）。
+以上示例为全局安装。如需项目级使用，将符号链接放入仓库内对应的项目 skills 目录（如 `.codex/skills/`、`.claude/skills/`）。
 
 ## 贡献
 

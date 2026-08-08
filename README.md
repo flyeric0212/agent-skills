@@ -31,37 +31,55 @@ For `grill-me`, the workflow is:
 
 ## Installation
 
-Copy the skill directory you want into your agent's skills directory, or symlink it. All agents below read `SKILL.md` from the same directory layout.
+### Quick install with `npx skills` (recommended)
 
-### Codex
+Use the [skills CLI](https://github.com/vercel-labs/skills) — the official installer for the open agent skills ecosystem. It auto-detects which coding agents you have installed and symlinks every skill in this repo into each one:
+
+```sh
+npx skills add <owner>/agent-skills
+```
+
+Replace `<owner>` with the GitHub username of this repository. Useful variants:
+
+- `--skill grill-me` — install only a specific skill
+- `-g` — install globally (`~/<agent>/skills/`) instead of only in the current project
+- `-a codex -a claude-code` — target specific agents instead of all detected ones
+- `--copy` — copy files instead of symlinking
+- `npx skills list` — show installed skills; `npx skills update` / `npx skills remove` — manage them
+
+### Manual install
+
+Copy or symlink `skills/grill-me` into your agent's skills directory.
+
+#### Codex
 
 ```sh
 mkdir -p ~/.codex/skills
 ln -s "$PWD/skills/grill-me" ~/.codex/skills/grill-me
 ```
 
-### Claude Code
+#### Claude Code
 
 ```sh
 mkdir -p ~/.claude/skills
 ln -s "$PWD/skills/grill-me" ~/.claude/skills/grill-me
 ```
 
-### Cursor
+#### Cursor
 
 ```sh
 mkdir -p ~/.cursor/skills
 ln -s "$PWD/skills/grill-me" ~/.cursor/skills/grill-me
 ```
 
-### opencode
+#### opencode
 
 ```sh
 mkdir -p ~/.config/opencode/skills
 ln -s "$PWD/skills/grill-me" ~/.config/opencode/skills/grill-me
 ```
 
-For project-scoped use instead of user-global, place the symlink under the corresponding project directory (e.g. `.codex/skills/`, `.claude/skills/`, `.cursor/skills/`, `.opencode/skills/`) inside your repo.
+The examples above install for all projects. For project-scoped use, place the symlink under the agent's project skills directory (e.g. `.codex/skills/`, `.claude/skills/`) inside your repo instead.
 
 ## Contributing
 
