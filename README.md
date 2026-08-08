@@ -1,15 +1,13 @@
 # Agent Skills
 
-A collection of agent skills that fix real alignment problems: agents that assume too much, ask too many rounds of questions, or produce something other than what you asked for.
+A collection of small, practical agent skills for everyday engineering and productivity workflows. Instead of heavyweight "universal workflows", each skill captures a single working method that has proven itself in real projects — free to use, modify, and combine.
 
-Each skill is small, self-contained, and practical — no heavyweight "universal workflow". They were born from real project work and real personal productivity needs, and they are free to use, modify, and combine.
+## Why
 
-## Why these skills
+The most common agent failures are not about model capability. They come from missing context, missing feedback loops, or being asked to do too much in one shot. These skills address those failure modes directly:
 
-Many AI agent failures are not about the model being "not smart enough". The failures come from missing context, missing feedback loops, missing shared language — or from being handed a task that is too large to begin with. These skills exist to correct those failure modes.
-
-- **Alignment before action**: Agents that start implementing before understanding what you want produce the most predictable kind of waste. `grill-me` aligns on a plan through a structured batch interview — resolving the decisions that actually change the outcome, in as few rounds as possible.
-- **Compact, decision-focused questioning**: Instead of open-ended questions, every decision is presented with a recommendation and concrete options, so a plan can be confirmed or corrected in seconds rather than ten back-and-forth turns.
+- **Align before acting**: agents that start implementing before understanding the goal are the most predictable source of rework. `grill-me` runs a structured batch interview that settles the decisions actually changing the outcome, in as few rounds as possible.
+- **Ask decision-focused questions**: every decision comes with a recommendation and concrete options, never an open-ended question — so a plan can be confirmed or corrected in seconds instead of ten rounds of back-and-forth.
 
 ## Skills
 
@@ -17,17 +15,17 @@ Many AI agent failures are not about the model being "not smart enough". The fai
 |-------|-------------|
 | [grill-me](./skills/grill-me/SKILL.md) | Align on a plan, proposal, or design through a structured batch interview that resolves design decisions with minimal rounds. |
 
-Each skill lives in its own directory under `skills/` and is self-contained: `SKILL.md` (authoritative, English) plus any translations. Adding a new skill is just a new directory plus a row in this table.
+Each skill is self-contained in its own directory under `skills/`: a `SKILL.md` (authoritative, English) plus any translations. Adding a new skill is just a new directory and a row in this table.
 
 ## How it works
 
-Skills here use plain Markdown with YAML frontmatter. The `description` in the frontmatter is what agents use to decide when to invoke the skill; the body is the instruction the agent follows.
+Skills in this repo follow the standard agent skills format: a directory with a `SKILL.md` file using YAML frontmatter. The `description` field tells agents when to invoke the skill; the body is the instruction they follow.
 
-For `grill-me`, the workflow is:
+For `grill-me`:
 
-1. **Scope output** — after analyzing the topic and available context, the agent outputs a dependency-aware batch plan and waits for confirmation.
-2. **Batch progression** — each batch presents decisions as a compact table (recommendation + options); missing decisions or wrong dependencies are folded back into the remaining batches.
-3. **Final summary** — a complete decision/outcome table for sign-off, with an optional fast exit when you say "use defaults for the rest".
+1. **Scope** — after analyzing the topic and available context, the agent presents a dependency-ordered batch plan and waits for confirmation.
+2. **Batch progression** — each batch presents decisions in a compact table (recommendation + options); newly discovered decisions or wrong dependencies are merged back into the remaining batches.
+3. **Final summary** — a complete decision/outcome table for final sign-off, with a fast exit whenever you say "use defaults for the rest".
 
 ## Installation
 
