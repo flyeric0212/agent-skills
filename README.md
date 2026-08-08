@@ -47,6 +47,8 @@ Replace `<owner>` with the GitHub username of this repository. Useful variants:
 - `--copy` — copy files instead of symlinking
 - `npx skills list` — show installed skills; `npx skills update` / `npx skills remove` — manage them
 
+Prefer project-scoped installs? `npx skills add` installs into the **current project** (`./<agent>/skills/`) by default — only add `-g` when you want the skill available in every project.
+
 ### Manual install
 
 Copy or symlink `skills/grill-me` into your agent's skills directory.
@@ -79,7 +81,21 @@ mkdir -p ~/.config/opencode/skills
 ln -s "$PWD/skills/grill-me" ~/.config/opencode/skills/grill-me
 ```
 
-The examples above install for all projects. For project-scoped use, place the symlink under the agent's project skills directory (e.g. `.codex/skills/`, `.claude/skills/`) inside your repo instead.
+#### Project-scoped install
+
+Don't want a global install? Install the skill into a single project instead. From the project root, symlink into the agent's project skills directory (`.agents/skills/` for Codex, Cursor, and opencode; `.claude/skills/` for Claude Code):
+
+```sh
+# Codex, Cursor, opencode
+mkdir -p .agents/skills
+ln -s /path/to/agent-skills/skills/grill-me .agents/skills/grill-me
+
+# Claude Code
+mkdir -p .claude/skills
+ln -s /path/to/agent-skills/skills/grill-me .claude/skills/grill-me
+```
+
+Project-scoped skills are committed with the repo and shared with your team. Global installs (`~/<agent>/skills/`) make the skill available in every project on your machine.
 
 ## Contributing
 

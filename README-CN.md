@@ -49,6 +49,8 @@ npx skills add <owner>/agent-skills
 - `--copy` — 复制文件而非符号链接
 - `npx skills list` — 查看已安装技能；`npx skills update` / `npx skills remove` — 管理已安装技能
 
+更喜欢项目级安装？`npx skills add` 默认就安装在**当前项目**（`./<agent>/skills/`），只有需要所有项目可用时才加 `-g`。
+
 ### 手动安装
 
 将 `skills/grill-me` 复制或符号链接到 Agent 的 skills 目录。
@@ -81,7 +83,21 @@ mkdir -p ~/.config/opencode/skills
 ln -s "$PWD/skills/grill-me" ~/.config/opencode/skills/grill-me
 ```
 
-以上示例为全局安装。如需项目级使用，将符号链接放入仓库内对应的项目 skills 目录（如 `.codex/skills/`、`.claude/skills/`）。
+#### 项目级安装
+
+不习惯全局安装？可以只安装到单个项目。在项目根目录，符号链接到 Agent 的项目 skills 目录（Codex、Cursor、opencode 用 `.agents/skills/`；Claude Code 用 `.claude/skills/`）：
+
+```sh
+# Codex, Cursor, opencode
+mkdir -p .agents/skills
+ln -s /path/to/agent-skills/skills/grill-me .agents/skills/grill-me
+
+# Claude Code
+mkdir -p .claude/skills
+ln -s /path/to/agent-skills/skills/grill-me .claude/skills/grill-me
+```
+
+项目级技能随仓库提交、团队成员共享；全局安装（`~/<agent>/skills/`）则让本机所有项目都能用。
 
 ## 贡献
 
