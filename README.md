@@ -1,5 +1,7 @@
 # Agent Skills
 
+**Language:** [English](README.md) · [简体中文](README-CN.md)
+
 A collection of small, practical agent skills for everyday engineering and productivity workflows. Instead of heavyweight "universal workflows", each skill captures a single working method that has proven itself in real projects — free to use, modify, and combine.
 
 ## Why
@@ -8,12 +10,14 @@ The most common agent failures are not about model capability. They come from mi
 
 - **Align before acting**: agents that start implementing before understanding the goal are the most predictable source of rework. `grill-me` runs a structured batch interview that settles the decisions actually changing the outcome, in as few rounds as possible.
 - **Ask decision-focused questions**: every decision comes with a recommendation and concrete options, never an open-ended question — so a plan can be confirmed or corrected in seconds instead of ten rounds of back-and-forth.
+- **Preserve context across sessions**: sessions lose working memory, and paused work wastes time being re-discovered. `handoff` writes a checkpoint — verifiable progress, decisions, and a directly executable next step — so the next session or agent picks up exactly where the work stopped.
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
 | [grill-me](./skills/grill-me/SKILL.md) | Align on a plan, proposal, or design through a structured batch interview that resolves design decisions with minimal rounds. |
+| [handoff](./skills/handoff/SKILL.md) | Write an engineering handoff checkpoint (`handoff.md`) — verifiable progress, decisions, and next steps — so the next session or agent can continue unfinished work. |
 
 Each skill is self-contained in its own directory under `skills/`: a `SKILL.md` (authoritative, English) plus any translations. Adding a new skill is just a new directory and a row in this table.
 
@@ -26,6 +30,12 @@ For `grill-me`:
 1. **Scope** — after analyzing the topic and available context, the agent presents a dependency-ordered batch plan and waits for confirmation.
 2. **Batch progression** — each batch presents decisions in a compact table (recommendation + options); newly discovered decisions or wrong dependencies are merged back into the remaining batches.
 3. **Final summary** — a complete decision/outcome table for final sign-off, with a fast exit whenever you say "use defaults for the rest".
+
+For `handoff`:
+
+1. **Checkpoint** — generate (or update an existing) `handoff.md` strictly from the built-in template, honoring the user's path and project conventions when present.
+2. **Evidence only** — only verifiable results go into Done; anything speculative is explicitly marked, and the current handoff becomes the previous checkpoint on the next update.
+3. **Ready to resume** — every checkpoint ends with a first Next Step the next agent can execute directly, so paused work resumes without re-discovery.
 
 ## Installation
 
